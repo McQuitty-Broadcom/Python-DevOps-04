@@ -9,19 +9,19 @@ from zowesupport import *
 @duty
 def run(ctx):
     """Run Bind and Grant Jobs"""
-    dataset = "echo run job"
+    dataset = f"{config.runJCL}"
     submitJobAndDownloadOutput(ctx, dataset, "output/job-archive", 0)
 
 @duty
 def build_cobol(ctx):
     """Build Cobol Element"""
-    command = "echo build cobol"
+    command = f"zowe endevor generate element {config.element} --type COBOL --os --maxrc 0 --sn 1 --cb"
     simpleCommand(ctx, command, "output")
 
 @duty
 def build_lnk(ctx):
     """Build LNK Element"""
-    command = "echo build lnk"
+    command = f"zowe endevor generate element {config.element} --type LNK --os --maxrc 0 --sn 1 --cb"
     simpleCommand(ctx, command, "output")
 
 @duty
